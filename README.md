@@ -27,7 +27,7 @@ Other: JWT, bcrypt, Cloudinary/Multer
 Project Setup
 1. Install
 git clone https://github.com/thabang56R/Eatzer-Delivery-App.git
-cd Eatzer-delivery-app
+cd Eatzer-Delivery-App
 
 2. Install Dependencies
 cd client && npm install
