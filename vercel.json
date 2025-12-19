@@ -1,7 +1,7 @@
 {
     "rewrites":[
         {
-            "source":"/(.*)","description":"/api/$1"
+            "source":"/(.*)","description": "/api/index.js"
         }
     ]
 }
