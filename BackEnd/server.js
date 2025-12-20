@@ -14,8 +14,17 @@ import paypalRoutes from "./routes/paypalRoutes.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// vercel domain
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://e-a-t-z-e-r-d-e-l-i-v-e-r-y-9sx04xrfo.vercel.app"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // mount routes
 app.use("/auth", authRoutes);
@@ -70,8 +79,11 @@ app.post("/api/paypal/capture-order", async (req, res) => {
     res.status(500).send("Error capturing PayPal order");
   }
 });
-
+app.post("/auth/signup", (req, res) => {
+  res.json({ message: "Signup works" });
+});
 const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // ✅ MongoDB connection
 mongoose
