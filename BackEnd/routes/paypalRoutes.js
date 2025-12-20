@@ -1,4 +1,4 @@
-import Order from "../models/Order.js";
+import Order from "../models/order.js";
 import express from "express";
 import paypal from "@paypal/checkout-server-sdk";
 
