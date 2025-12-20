@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
-import FoodMenu from "./pages/Foodmenu";
+import FoodMenu from "./pages/FoodMenu";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
 import FloatingCartButton from "./components/FloatingCartButton";
