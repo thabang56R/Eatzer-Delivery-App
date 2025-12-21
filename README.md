@@ -12,9 +12,9 @@ Add to cart & place orders
 
 Track order status
 
-Admin panel for restaurants, items & orders
+Animated UI design 
 
-Image uploads (Cloudinary/Multer)
+Admin panel for restaurants, items & orders
 
 Fully responsive frontend
 
@@ -23,6 +23,8 @@ Tech Stack
 Frontend: React, React Router, Axios, Bootstrap
 Backend: Node, Express, MongoDB, Mongoose
 Other: JWT, bcrypt, Cloudinary/Multer
+
+Integrated payment system
 
 Project Setup
 1. Install
