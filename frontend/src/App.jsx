@@ -1,6 +1,7 @@
 import React from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+
 import FoodMenu from "./pages/FoodMenu";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
@@ -10,38 +11,40 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Confirmation from "./pages/Confirmation";
 import MyOrders from "./pages/MyOrders";
+
 import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { fetchRestaurants } from './api';
+
+import "./App.css"; // ← create this file if you want custom styles
 
 function App() {
   return (
     <CartProvider>
-      {/* Navbar - Fixed & Mobile Friendly */}
+      {/* === NAVBAR === */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container">
-          <Link to="/" className="navbar-brand fw-bold fs-4">
-            🍔Eatzer DeliveryApp
-          </Link>
+          <NavLink to="/" className="navbar-brand fw-bold fs-4">
+            🍔 Eatzer DeliveryApp
+          </NavLink>
 
           <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
+            data-bs-target="#navbarMainContent"
+            aria-controls="navbarMainContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarMainContent">
             <ul className="navbar-nav ms-auto align-items-center gap-2 gap-lg-3">
               <li className="nav-item">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                    `nav-link ${isActive ? "active" : ""}`
                   }
                   end
                 >
@@ -53,7 +56,7 @@ function App() {
                 <NavLink
                   to="/Menu"
                   className={({ isActive }) =>
-                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                    `nav-link ${isActive ? "active" : ""}`
                   }
                 >
                   Menu
@@ -64,7 +67,7 @@ function App() {
                 <NavLink
                   to="/my-orders"
                   className={({ isActive }) =>
-                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                    `nav-link ${isActive ? "active" : ""}`
                   }
                 >
                   Orders
@@ -75,7 +78,7 @@ function App() {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    `nav-link btn btn-outline-primary ${isActive ? "active" : ""}`
+                    `nav-link btn btn-outline-light btn-sm ${isActive ? "active" : ""}`
                   }
                 >
                   Login
@@ -86,7 +89,7 @@ function App() {
                 <NavLink
                   to="/signup"
                   className={({ isActive }) =>
-                    `nav-link btn btn-success ${isActive ? "active" : ""}`
+                    `nav-link btn btn-success btn-sm ${isActive ? "active" : ""}`
                   }
                 >
                   Sign Up
@@ -97,8 +100,8 @@ function App() {
         </div>
       </nav>
 
-      {/* Important: Add top padding because of fixed navbar */}
-      <div style={{ paddingTop: "80px" }}>
+      {/* Push content down because navbar is fixed */}
+      <div className="pt-5 pb-4">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Menu" element={<FoodMenu />} />
@@ -112,26 +115,24 @@ function App() {
         </Routes>
       </div>
 
-      {/* Floating Cart Button */}
       <FloatingCartButton />
 
-      {/* Footer */}
-      <footer className="bg-dark text-light text-center py-4 mt-5">
+      {/* === FOOTER === */}
+      <footer className="bg-dark text-light py-5 mt-5">
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 className="text-success">🍔Eatzer DeliveryApp</h5>
+            <div className="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+              <h5 className="text-success mb-3">🍔 Eatzer DeliveryApp</h5>
               <p>
                 Your favorite meals delivered fast at your door.<br />
-                Enjoy fresh food and secure payments.
+                Fresh food • Secure payments • Great service
               </p>
 
-              {/* App Store Buttons */}
-              <div className="mt-3 d-flex flex-wrap justify-content-center gap-3">
+              <div className="mt-4 d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
                 <a
                   href="https://play.google.com/store"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
@@ -139,11 +140,10 @@ function App() {
                     style={{ height: "48px" }}
                   />
                 </a>
-
                 <a
                   href="https://www.apple.com/app-store/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   <img
                     src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
@@ -154,8 +154,8 @@ function App() {
               </div>
             </div>
 
-            <div className="col-lg-6 col-md-12 mb-4 mb-md-0 d-flex justify-content-center align-items-center">
-              <div className="social-icons d-flex gap-4 fs-4">
+            <div className="col-lg-6 d-flex justify-content-center justify-content-lg-end align-items-center">
+              <div className="d-flex gap-4 fs-4">
                 <a href="#" className="text-white"><FaFacebookF /></a>
                 <a href="#" className="text-white"><FaTwitter /></a>
                 <a href="#" className="text-white"><FaInstagram /></a>
@@ -164,7 +164,7 @@ function App() {
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-top border-secondary">
+          <div className="text-center mt-5 pt-4 border-top border-secondary">
             <small>
               © {new Date().getFullYear()} Eatzer DeliveryApp. All rights reserved.<br />
               Designed & Developed by Thabang Rakeng • 064 917 3328<br />
