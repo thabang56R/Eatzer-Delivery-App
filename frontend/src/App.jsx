@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, NavLink } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import FoodMenu from "./pages/FoodMenu";
 import Cart from "./pages/Cart";
@@ -11,21 +11,19 @@ import Home from "./pages/Home";
 import Confirmation from "./pages/Confirmation";
 import MyOrders from "./pages/MyOrders";
 import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
-
-
-
+import { fetchRestaurants } from './api';
 
 function App() {
   return (
     <CartProvider>
-      
-        {/* Navbar */}
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container">
-            <Link to="/" className="navbar-brand fw-bold">
-              🍔Eatzer DeliveryApp
-            </Link>
-            <button
+      {/* Navbar - Fixed & Mobile Friendly */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div className="container">
+          <Link to="/" className="navbar-brand fw-bold fs-4">
+            🍔Eatzer DeliveryApp
+          </Link>
+
+          <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -36,27 +34,71 @@ function App() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-               <ul className="navbar-nav">
-                <li className="nav-item">
-                 <a className="nav-link btn btn-outline-light mx-2" href="/">Home</a></li>
-                <li className="nav-item">
-                <a className="nav-link btn btn-outline-light mx-2" href="/my-orders">Orders</a></li>
-                <li className="nav-item">
-                <a className="nav-link btn btn-outline-light mx-2" href="/login">Login</a></li>
-                <li className="nav-item">
-                <a className="nav-link btn btn-outline-light mx-2" href="/signup">SignUp</a></li>
 
-               </ul>
-             </div>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto align-items-center gap-2 gap-lg-3">
+              <li className="nav-item">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                  }
+                  end
+                >
+                  Home
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/Menu"
+                  className={({ isActive }) =>
+                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                  }
+                >
+                  Menu
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/my-orders"
+                  className={({ isActive }) =>
+                    `nav-link btn btn-outline-light ${isActive ? "active" : ""}`
+                  }
+                >
+                  Orders
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `nav-link btn btn-outline-primary ${isActive ? "active" : ""}`
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  to="/signup"
+                  className={({ isActive }) =>
+                    `nav-link btn btn-success ${isActive ? "active" : ""}`
+                  }
+                >
+                  Sign Up
+                </NavLink>
+              </li>
+            </ul>
           </div>
-        
-        </nav>
+        </div>
+      </nav>
 
-        {/* Pages */}
-       
-      {/* your routes and components */}
-    
+      {/* Important: Add top padding because of fixed navbar */}
+      <div style={{ paddingTop: "80px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Menu" element={<FoodMenu />} />
@@ -67,94 +109,70 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="*" element={<Home />} />
-          
         </Routes>
-        
-
-        {/* Floating Cart Button */}
-        <FloatingCartButton />
-
-        {/* Footer */}
-        <footer className="bg-dark text-light text-center p-3 mt-5">
-          <div className="container p-4">
-        <div className="row">
-          {/* Left text */}
-          <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h5 className="text-success">🍔Eatzer DeliveryApp</h5>
-            <p className="text-light">
-              Your favorite meals delivered fast at your door. 
-              Enjoy fresh food and secure payments. 
-              Thank You for choosing Us
-              ⭐⭐⭐
-            </p>
-             {/* App Store Buttons */}
-      <div style={{ marginTop: "15px" }}>
-        <a
-          href="https://play.google.com/store"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-            alt="Get it on Google Play"
-            style={{ height: "50px", marginRight: "10px" }}
-          />
-        </a>
-
-        <a
-          href="https://www.apple.com/app-store/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-            alt="Download on the App Store"
-            style={{ height: "50px" }}
-          />
-        </a>
       </div>
+
+      {/* Floating Cart Button */}
+      <FloatingCartButton />
+
+      {/* Footer */}
+      <footer className="bg-dark text-light text-center py-4 mt-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 className="text-success">🍔Eatzer DeliveryApp</h5>
+              <p>
+                Your favorite meals delivered fast at your door.<br />
+                Enjoy fresh food and secure payments.
+              </p>
+
+              {/* App Store Buttons */}
+              <div className="mt-3 d-flex flex-wrap justify-content-center gap-3">
+                <a
+                  href="https://play.google.com/store"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                    alt="Get it on Google Play"
+                    style={{ height: "48px" }}
+                  />
+                </a>
+
+                <a
+                  href="https://www.apple.com/app-store/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                    alt="Download on the App Store"
+                    style={{ height: "48px" }}
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div className="col-lg-6 col-md-12 mb-4 mb-md-0 d-flex justify-content-center align-items-center">
+              <div className="social-icons d-flex gap-4 fs-4">
+                <a href="#" className="text-white"><FaFacebookF /></a>
+                <a href="#" className="text-white"><FaTwitter /></a>
+                <a href="#" className="text-white"><FaInstagram /></a>
+                <a href="#" className="text-white"><FaWhatsapp /></a>
+              </div>
+            </div>
           </div>
 
-          {/* Social icons */}
-          <div className="col-lg-6 col-md-12 mb-4 mb-md-0 d-flex justify-content-center align-items-right">
-            <a
-              href=""
-              className="text-white me-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF size={24} />
-            </a>
-            <a
-              href=""
-              className="text-white me-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter size={24} />
-            </a>
-            <a
-              href=""
-              className="text-white me-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram size={24} />
-            </a>
-            <a
-              href=""
-              className="text-white me-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaWhatsapp size={24} />
-            </a>
+          <div className="mt-4 pt-3 border-top border-secondary">
+            <small>
+              © {new Date().getFullYear()} Eatzer DeliveryApp. All rights reserved.<br />
+              Designed & Developed by Thabang Rakeng • 064 917 3328<br />
+              Proudly South African
+            </small>
           </div>
         </div>
-      </div><h6 className="text-success">By continuing past this page, you agree to our Terms of service , cookie Policy and content Policies . All trademarks are properties of their respective owners.</h6>
-          © {new Date().getFullYear()} 🍔Eatzer DeliveryApp. All rights reserved.
-        </footer>
-      
+      </footer>
     </CartProvider>
   );
 }
