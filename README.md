@@ -8,6 +8,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 🌐 Live Demo
+
 **website link**: https://e-a-t-z-e-r-d-e-l-i-v-e-r-y-iubgqs85n.vercel.app/
 
 Eatzer is a modern food delivery web application that allows users to browse restaurants, order meals, and manage deliveries through a clean and responsive user interface.
