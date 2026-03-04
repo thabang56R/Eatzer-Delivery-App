@@ -7,6 +7,8 @@
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+**website link**: https://e-a-t-z-e-r-d-e-l-i-v-e-r-y-iubgqs85n.vercel.app/
+
 Eatzer is a modern food delivery web application that allows users to browse restaurants, order meals, and manage deliveries through a clean and responsive user interface.
 
 The application demonstrates full-stack development using the **MERN stack**, providing a seamless food ordering experience similar to platforms like Uber Eats and DoorDash.
