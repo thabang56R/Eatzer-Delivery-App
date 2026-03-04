@@ -7,7 +7,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-🌐 Live Demo
+🌐 **Live Demo**
 
 **website link**: https://e-a-t-z-e-r-d-e-l-i-v-e-r-y-iubgqs85n.vercel.app/
 
