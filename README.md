@@ -1,55 +1,121 @@
-Delivery App – MERN Stack
+# 🍔 Eatzer Delivery App
 
-A simple and modern delivery application built using the MERN stack (MongoDB, Express, React, Node). Users can browse restaurants, view menus, add items to cart, and place orders, while admins manage restaurants, menu items, and orders. The app includes secure authentication, responsive UI, and clean RESTful APIs.
+![MERN Stack](https://img.shields.io/badge/Stack-MERN-green)
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Features
+Eatzer is a modern food delivery web application that allows users to browse restaurants, order meals, and manage deliveries through a clean and responsive user interface.
 
-User signup & login (JWT auth)
+The application demonstrates full-stack development using the **MERN stack**, providing a seamless food ordering experience similar to platforms like Uber Eats and DoorDash.
 
-Browse restaurants & menus
+---
 
-Add to cart & place orders
+# 🚀 Overview
 
-Track order status
+Eatzer Delivery App is designed to simulate a real-world online food delivery platform where customers can explore menus, place orders, and track their purchases.
 
-Animated UI design 
+The project focuses on demonstrating practical implementation of **full-stack web development**, including frontend UI design, backend APIs, and database integration.
 
-Admin panel for restaurants, items & orders
+---
 
-Fully responsive frontend
+# ✨ Features
 
-Tech Stack
+• 🍽 Browse restaurants and food menus  
+• 🛒 Add food items to cart  
+• 📦 Place and manage orders  
+• 👤 User authentication system  
+• 📱 Responsive UI for desktop and mobile  
+• ⚡ Fast and optimized web experience  
+• 🔄 Dynamic order management  
 
-Frontend: React, React Router, Axios, Bootstrap
-Backend: Node, Express, MongoDB, Mongoose
-Other: JWT, bcrypt, Cloudinary/Multer
+---
 
-Integrated payment system
+# 🛠 Tech Stack
 
-Project Setup
-1. Install
-git clone https://github.com/thabang56R/Eatzer-Delivery-App.git
-cd Eatzer-Delivery-App
+### Frontend
+- React
+- Vite
+- HTML5
+- CSS3
 
-2. Install Dependencies
-cd client && npm install
-cd ../server && npm install
+### Backend
+- Node.js
+- Express.js
 
-3. Environment Variables
+### Database
+- MongoDB
 
-Create server/.env:
+---
 
-MONGO_URI=your_mongo_uri
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_NAME=your_name
-CLOUDINARY_API_KEY=your_key
-CLOUDINARY_API_SECRET=your_secret
+# 🏗 Architecture
 
-4. Run App
-# Backend
-cd server
-npm start
+Frontend  
+React + Vite  
 
-# Frontend
-cd client
-npm start
+⬇  
+
+Backend API  
+Node.js + Express  
+
+⬇  
+
+Database  
+MongoDB  
+
+---
+
+# ⚙ Installation
+
+Clone the repository
+
+```
+git clone https://github.com/thabang56R/eatzer-delivery-app.git
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+Run the development server
+
+```
+npm run dev
+```
+
+---
+
+# 🎯 Project Purpose
+
+This project was built to demonstrate the development of a **full-stack food delivery platform** using the MERN stack.
+
+It showcases how frontend interfaces interact with backend APIs and databases to build a scalable web application.
+
+---
+
+# 📌 Future Improvements
+
+• Online payment integration  
+• Real-time order tracking  
+• Delivery rider dashboard  
+• Admin panel for restaurant management  
+• Push notifications for order updates  
+
+---
+
+# 👨‍💻 Author
+
+**Thabang Rakeng**
+
+GitHub  
+https://github.com/thabang56R
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
