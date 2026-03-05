@@ -1,3 +1,5 @@
+![Repo Views](https://komarev.com/ghpvc/?username=thabang56R&color=orange)
+
 # 🍔 Eatzer Delivery App
 
 ![MERN Stack](https://img.shields.io/badge/Stack-MERN-green)
